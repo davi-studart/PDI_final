@@ -101,7 +101,7 @@ Classes: `crack` (rachadura) e `no_crack` (sem rachadura).
 python evaluate_models.py
 ```
 
-Testa cada modelo no próprio dataset (intra) e nos outros (cross), reporta top-1 accuracy e declara o melhor modelo.
+Testa cada modelo no próprio dataset (intra) e nos outros (cross), gera saída no terminal com top-1 accuracy e salva `relatorio_modelos.pdf` (3 páginas: tabela de acurácia, melhor modelo por dataset, análise cruzada).
 
 ## Notas Técnicas
 

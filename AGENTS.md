@@ -82,4 +82,4 @@ Compare all trained models on all datasets:
 ```bash
 python evaluate_models.py
 ```
-Tests each model on its own dataset (intra) and the other datasets (cross), reports top-1 accuracy, declares the best model, and saves a PDF report (`relatorio_modelos.pdf`).
+Tests each model on its own dataset (intra) and the other datasets (cross), reports top-1 accuracy, declares the best model, and saves a 3-page PDF report (`relatorio_modelos.pdf`).
