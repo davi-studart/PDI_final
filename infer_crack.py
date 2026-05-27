@@ -2,8 +2,8 @@
 Inference script for trained crack classifier.
 
 Usage:
-    python infer_crack.py --model runs_crack/dataset_cracks_flow1_yolov8n-cls/weights/best.pt --image teste.jpg
-    python infer_crack.py --model runs_crack/.../best.pt --dir test_images/
+    python infer_crack.py --model runs/classify/runs_crack/dataset_cracks_flow1_yolov8n-cls/weights/best.pt --image teste.jpg
+    python infer_crack.py --model runs/classify/runs_crack/.../best.pt --dir test_images/
 
 Args:
     --model: path to best.pt weights
@@ -35,15 +35,17 @@ def main():
     print(f"Nomes das classes: {model.names}")
     print()
 
+    class_names = model.names
+
     if args.image:
         results = model(args.image, verbose=True)
         for r in results:
             probs = r.probs
             print(f"Imagem: {args.image}")
-            print(f"  Classe: {probs.names.get(probs.top1, 'desconhecida')}")
+            print(f"  Classe: {class_names.get(probs.top1, 'desconhecida')}")
             print(f"  Confiança: {probs.top1conf:.4f}")
             for idx, conf in zip(probs.top5, probs.top5conf):
-                cls_name = probs.names.get(idx, "desconhecida")
+                cls_name = class_names.get(idx, "desconhecida")
                 print(f"    {cls_name}: {conf:.4f}")
 
     elif args.dir:
@@ -61,7 +63,7 @@ def main():
             results = model(img_path, verbose=False)
             for r in results:
                 probs = r.probs
-                pred = probs.names.get(probs.top1, "?")
+                pred = class_names.get(probs.top1, "?")
                 conf = probs.top1conf
                 label = "RACHADURA" if pred == "crack" else "SEM RACHADURA"
                 print(f"  {fname}: {label} ({conf:.4f})")

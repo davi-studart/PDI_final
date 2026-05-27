@@ -1,17 +1,17 @@
-"""
-Train YOLOv8 classification model for crack detection.
+   """
+    Train YOLOv8 classification model for crack detection.
 
-Usage:
-    python train_crack_classifier.py --dataset dataset_cracks_flow1 --model yolov8n-cls --epochs 50
-    python train_crack_classifier.py --dataset dataset_cracks_flow2 --model yolov8s-cls --epochs 30
+    Usage:
+        python train_crack_classifier.py --dataset dataset_cracks_flow1 --model yolov8n-cls.pt --epochs 50
+        python train_crack_classifier.py --dataset dataset_cracks_flow2 --model yolov8s-cls.pt --epochs 30
 
-Args:
-    --dataset: path to prepared dataset (train/ val/ test/ with crack/ no_crack/)
-    --model: pretrained cls model (yolov8n-cls.pt, yolov8s-cls.pt, yolov8m-cls.pt)
-    --epochs: number of training epochs
-    --imgsz: image size for training
-    --batch: batch size
-"""
+    Args:
+        --dataset: path to prepared dataset (train/ val/ test/ with crack/ no_crack/)
+        --model: pretrained cls model (yolov8n-cls.pt, yolov8s-cls.pt, yolov8m-cls.pt)
+        --epochs: number of training epochs
+        --imgsz: image size for training
+        --batch: batch size
+    """
 
 import argparse
 import os
@@ -71,8 +71,12 @@ def main():
         amp=True,
     )
 
+    run_name = args.name or f"{os.path.basename(args.dataset)}_{args.model.replace('.pt', '')}"
+    best_path = f"runs/classify/runs_crack/{run_name}/weights/best.pt"
     print("\nTreino concluído!")
-    print(f"Melhor modelo: runs_crack/{results.name}/weights/best.pt")
+    print(f"Melhor modelo: {best_path}")
+    print(f"\nPara inferência:")
+    print(f"  python infer_crack.py --model {best_path} --image teste.jpg")
 
 
 if __name__ == "__main__":

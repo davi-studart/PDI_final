@@ -6,5 +6,6 @@ Negativa2/
 Positiva2/
 dataset_cracks_*/
 runs_crack/
+runs/classify/runs_crack/
 /__pycache__
 AGENTS.md
