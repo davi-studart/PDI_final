@@ -1,17 +1,17 @@
-   """
-    Train YOLOv8 classification model for crack detection.
+"""
+Train YOLOv8 classification model for crack detection.
 
-    Usage:
-        python train_crack_classifier.py --dataset dataset_cracks_flow1 --model yolov8n-cls.pt --epochs 50
-        python train_crack_classifier.py --dataset dataset_cracks_flow2 --model yolov8s-cls.pt --epochs 30
+Usage:
+    python train_crack_classifier.py --dataset dataset_cracks_flow1 --model yolov8n-cls.pt --epochs 50
+    python train_crack_classifier.py --dataset dataset_cracks_flow2 --model yolov8s-cls.pt --epochs 30
 
-    Args:
-        --dataset: path to prepared dataset (train/ val/ test/ with crack/ no_crack/)
-        --model: pretrained cls model (yolov8n-cls.pt, yolov8s-cls.pt, yolov8m-cls.pt)
-        --epochs: number of training epochs
-        --imgsz: image size for training
-        --batch: batch size
-    """
+Args:
+    --dataset: path to prepared dataset (train/ val/ test/ with crack/ no_crack/)
+    --model: pretrained cls model (yolov8n-cls.pt, yolov8s-cls.pt, yolov8m-cls.pt)
+    --epochs: number of training epochs
+    --imgsz: image size for training
+    --batch: batch size
+"""
 
 import argparse
 import os
