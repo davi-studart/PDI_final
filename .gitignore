@@ -4,3 +4,7 @@ Negativa1/
 Positiva1/
 Negativa2/
 Positiva2/
+dataset_cracks_*/
+runs_crack/
+/__pycache__
+AGENTS.md
